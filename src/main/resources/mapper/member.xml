@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.board.ajax.mapper.MemberMapper"> 
+	<select id="memberList" resultType="com.board.ajax.dto.MemberDTO">
+		 select * from member
+	</select>
+	 
+	 <select id="memberSearchList" resultType="com.board.ajax.dto.MemberDTO">
+		 select * from member where member_name like '%'||#{param}||'%'
+	</select>
+	
+	<select id="idCheck" resultType="String">
+		select member_id from member where member_id = #{param1} and member_pwd=#{param2}
+	</select>
+	
+	<select id="login" resultType="String">
+		select member_id from member where member_id=#{param1}
+	</select>
+	
+	
+	<insert id="memberListAdd">
+<!--		insert into member values(member_se.nextval, '테스트유저1', 'test1', 'asd123', '서울시 광진구 통일로', 23, 'M');-->
+		insert into member values(member_se.nextval, #{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6})
+	</insert>
+
+		 
+</mapper>
